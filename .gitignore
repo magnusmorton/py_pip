@@ -1,0 +1,4 @@
+py_pip.c
+build
+build/*
+*.pip
