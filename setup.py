@@ -6,7 +6,7 @@ setup (name = 'PythonPipLib',
        description = 'Parametric Integer Programming native wrapper',
        cmdclass = {'build_ext':build_ext},
        ext_modules = [Extension("py_pip", ["py_pip.pyx", "pip.pxd"],
-                        libraries=["piplib"])],
+                        libraries=["piplib64"])],
        test_suite = "tests",
        install_requires = ['Cython>=0.15.1']
        )
