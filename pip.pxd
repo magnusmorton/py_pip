@@ -1,4 +1,4 @@
-cdef extern from '<piplib/piplib.h>':
+cdef extern from '<piplib/piplib64.h>':
     ctypedef int Entier
     
     # Types
@@ -22,7 +22,7 @@ cdef extern from '<piplib/piplib.h>':
         
     ctypedef pipoptions PipOptions
     
-    struct pipvector
+    struct pipvector:
         int nb_elements
         Entier * the_vector
         Entier * the_deno
@@ -33,13 +33,13 @@ cdef extern from '<piplib/piplib.h>':
         int rank
         PipVector * vector
         Entier deno 
-        struct pipnewparm * next
+        pipnewparm * next
         
     ctypedef pipnewparm PipNewparm
     
-    struct piplist
+    struct piplist:
         PipVector * vector 
-        struct piplist * next 
+        piplist * next 
     
     ctypedef piplist PipList
     
@@ -47,16 +47,16 @@ cdef extern from '<piplib/piplib.h>':
         PipNewparm * newparm 
         PipList * list
         PipVector * condition
-        struct pipquast * next_then
-        struct pipquast * next_else
-        struct pipquast * father 
+        pipquast * next_then
+        pipquast * next_else
+        pipquast * father 
         
     ctypedef pipquast PipQuast 
         
     
     # Functions
     PipMatrix * pip_matrix_alloc(unsigned, unsigned)
-    PipOptions * pip_options_init(void)
+    PipOptions * pip_options_init()
     void pip_matrix_free(PipMatrix *)
     void pip_options_free(PipOptions *)
     
