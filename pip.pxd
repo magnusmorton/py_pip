@@ -1,3 +1,4 @@
+cimport libc.stdio
 cdef extern from '<piplib/piplib64.h>':
     ctypedef int Entier
     
@@ -59,4 +60,5 @@ cdef extern from '<piplib/piplib64.h>':
     PipOptions * pip_options_init()
     void pip_matrix_free(PipMatrix *)
     void pip_options_free(PipOptions *)
+    void pip_matrix_print(libc.stdio.FILE *, PipMatrix *)
     
