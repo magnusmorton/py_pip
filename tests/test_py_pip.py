@@ -3,7 +3,7 @@ from py_pip import *
 
 class TestProblem(unittest.TestCase):
     
-    INDEP = [[1, 0, 0], [-1, 0, 10],[0, 1, 0],[0, -1, 10],[1, -1, 0],[-1, 1, 0],[1, -1, -1],[-1, 1, -1]]
+    INDEP = [[1, 1, 0, 0], [1, -1, 0, 10],[1,0, 1, 0],[1, 0, -1, 10],[0, 1, -1, 0],[1, 1, -1, -1],[1, -1, 1, -1]]
             
             
 
@@ -26,6 +26,7 @@ class TestProblem(unittest.TestCase):
         problem = Problem(2)
         problem.domain = TestProblem.INDEP
         problem.solve()
+        problem.dump()
            
     
     def test_basic_independent(self):
