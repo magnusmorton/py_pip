@@ -18,8 +18,14 @@ class TestProblem(unittest.TestCase):
         assert problem.unknowns_count == 2, "Wrong number of unknowns"
         
     def test_number_of_unknowns_set_when_3(self):
-           problem = Problem(3)
-           assert problem.unknowns_count == 3, "Wrong number of unknowns"
+        problem = Problem(3)
+        assert problem.unknowns_count == 3, "Wrong number of unknowns"
+           
+           
+    def test_solve_runner(self):
+        problem = Problem(2)
+        problem.domain = TestProblem.INDEP
+        problem.solve()
            
     
     def test_basic_independent(self):
