@@ -3,6 +3,8 @@ cimport pip
 cdef class Problem:
     cdef int _unknowns_count
     cdef _domain
+    cdef pip.PipMatrix _problem
+    
     def __cinit__(self, unknowns_count=0):
         self._domain = []
         self._unknowns_count = unknowns_count
@@ -10,7 +12,6 @@ cdef class Problem:
     @property
     def unknowns_count(self):
         return self._unknowns_count
-        
     
     def get_domain(self):
         return self._domain
