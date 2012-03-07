@@ -12,6 +12,14 @@ cdef class Problem:
         self._py_domain = []
         self._unknowns_count = unknowns_count
         
+    def __dealloc__(self):
+        if self._domain is not NULL:
+            pip.pip_matrix_free(self._domain)
+            pip.pip_options_free(self._options)
+        if self._context is not NULL:
+            pip.pip_matrix_free(self._context)
+            
+        
     @property
     def unknowns_count(self):
         return self._unknowns_count
@@ -49,6 +57,10 @@ cdef class Problem:
 
 cdef class Solution:
     cdef pip.PipQuast *_solution
+    
+    def __dealloc__(self):
+        if self._solution is not NULL:
+            pip.pip_quast_free(self._solution)
     
     cdef add_solution(self, pip.PipQuast *solution):
         self._solution = solution
