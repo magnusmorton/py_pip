@@ -43,12 +43,9 @@ cdef class Problem:
         for i in range(rows):
             for j in range(cols):
                 self._domain.p[i][j] = self._py_domain[i][j]
-                
         sol = pip.pip_solve(self._domain, NULL,-1, self._options)
         wrapped_solution = Solution()
         wrapped_solution.add_solution(sol)
-        pip.pip_quast_print(libc.stdio.stdout, sol, 1)
-        libc.stdio.printf("%d\n",sol.list)
         return wrapped_solution
     
     def dump(self):
