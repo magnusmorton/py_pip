@@ -30,9 +30,12 @@ cdef class Problem:
         rows = len(self._py_domain)
         cols = len(self._py_domain[0])
         self._domain = pip.pip_matrix_alloc(rows, cols)
+        self._options = pip.pip_options_init()
         for i in range(rows):
             for j in range(cols):
                 self._domain.p[i][j] = self._py_domain[i][j]
+                
+        
                 
     
     def dump(self):
