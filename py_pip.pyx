@@ -27,6 +27,7 @@ cdef class Problem:
     
     def solve(Problem self):
         cdef int rows, cols
+        cdef pip.PipQuast * sol
         rows = len(self._py_domain)
         cols = len(self._py_domain[0])
         self._domain = pip.pip_matrix_alloc(rows, cols)
@@ -35,7 +36,8 @@ cdef class Problem:
             for j in range(cols):
                 self._domain.p[i][j] = self._py_domain[i][j]
                 
-        
+        sol = pip.pip_solve(self._domain, NULL,-1, self._options)
+        pip.pip_quast_print(libc.stdio.stdout, sol, 1)
                 
     
     def dump(self):
