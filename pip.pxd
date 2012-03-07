@@ -61,4 +61,6 @@ cdef extern from '<piplib/piplib64.h>':
     void pip_matrix_free(PipMatrix *)
     void pip_options_free(PipOptions *)
     void pip_matrix_print(libc.stdio.FILE *, PipMatrix *)
+    PipQuast * pip_solve(PipMatrix *, PipMatrix *, int, PipOptions *)
+    void pip_quast_print(libc.stdio.FILE *, PipQuast *, int)
     
